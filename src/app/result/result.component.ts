@@ -1,16 +1,51 @@
-import { Component } from '@angular/core';
-import { AppServiceService } from '../app-service.service'
-
+import { Component, OnInit } from '@angular/core';
+interface Result {
+  name:string,
+  marks:{
+      Maths:string,
+      English:string,
+      Science:string
+  },
+  rollNumber:string
+}
 @Component({
   selector: 'app-result',
   templateUrl: './result.component.html',
   styleUrls: ['./result.component.css']
 })
-export class ResultComponent  {
+export class ResultComponent implements OnInit  {
   results=[];
+  resultData :Result[]= [
+    {
+        "name":"rajiv",
+        "marks":{
+            "Maths":"18",
+            "English":"21",
+            "Science":"45"
+        },
+        "rollNumber":"KV2017-5A2"
+    },
+    {
+        "name":"abhishek",
+        "marks":{
+            "Maths":"43",
+            "English":"30",
+            "Science":"37"
+        },
+        "rollNumber":"KV2017-5A1"
+    },
+    {
+        "name":"zoya",
+        "marks":{
+            "Maths":"42",
+            "English":"31",
+            "Science":"50"
+        },
+        "rollNumber":"KV2017-5A3"
+    }
+]
+  constructor() {
 
-  constructor(private appService:AppServiceService) {
-    this.appService.getStudentResult().subscribe(response=>this.checkResult(response))
    }
 
   checkResult(arr){
@@ -27,5 +62,8 @@ export class ResultComponent  {
       return (a.totalMarks > b.totalMarks) ? a : b
     })
     max.status='Topper'
+  }
+  ngOnInit(){
+    this.checkResult(this.resultData)
   }
 }
