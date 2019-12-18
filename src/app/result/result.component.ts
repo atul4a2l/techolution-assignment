@@ -42,7 +42,25 @@ export class ResultComponent implements OnInit  {
             "Science":"50"
         },
         "rollNumber":"KV2017-5A3"
-    }
+    },
+    {
+      "name":"Atul",
+      "marks":{
+          "Maths":"20",
+          "English":"20",
+          "Science":"20"
+      },
+      "rollNumber":"KV2017-5A0"
+  },
+  {
+    "name":"Shashwat",
+    "marks":{
+        "Maths":"50",
+        "English":"50",
+        "Science":"50"
+    },
+    "rollNumber":"KV2017-5A0"
+}      
 ]
   constructor() {
 
@@ -55,7 +73,7 @@ export class ResultComponent implements OnInit  {
     });
     element.totalMarks=sum;
     this.results.push(element)
-    const isBelowThreshold = (currentValue) => currentValue > 20;
+    const isBelowThreshold = (currentValue) => currentValue >= 20;
     element.status=Object.values(element.marks).every(isBelowThreshold)==true?'Pass':'Fail'
     });
     const max = this.results.reduce((a, b) =>{
