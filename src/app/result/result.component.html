@@ -16,7 +16,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let studResult of newResult | arraySort" [ngStyle]="{'color': studResult.status==='Fail' ? 'red' : (studResult.status==='Topper' ? 'green' : null) }">
+            <tr *ngFor="let studResult of results | arraySort" [ngStyle]="{'color': studResult.status==='Fail' ? 'red' : (studResult.status==='Topper' ? 'green' : null) }">
               <th scope="row">{{studResult.name}}</th>
               <td>{{studResult.rollNumber}}</td>
               <td>{{studResult.totalMarks}}</td>
