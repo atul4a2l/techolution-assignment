@@ -1,0 +1,52 @@
+<div class="container">
+    <p>
+        Form Status: {{ registerForm.status }}
+      </p>                
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input maxlength="20" type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid':f.firstName.touched && f.firstName.errors }" />
+                            <div *ngIf="f.firstName.errors" class="invalid-feedback">
+                                <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                                <div *ngIf="f.firstName.errors.pattern">only character</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input maxlength="20" type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': f.lastName.touched && f.lastName.errors }" />
+                            <div *ngIf="f.lastName.errors" class="invalid-feedback">
+                                <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                                <div *ngIf="f.lastName.errors.pattern">only character</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Class</label>
+                            <input type="text" formControlName="class" class="form-control" [ngClass]="{ 'is-invalid': f.class.touched && f.class.errors }" />
+                            <div *ngIf="f.class.errors" class="invalid-feedback">
+                                <div *ngIf="f.class.errors.required">Class is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Year of Passing</label>
+                            <input type="number" min="2017" formControlName="yop" class="form-control" [ngClass]="{ 'is-invalid': f.yop.touched && f.yop.errors }" />
+                            <div *ngIf="f.yop.errors" class="invalid-feedback">
+                                <div *ngIf="f.yop.errors.required">YOP is required</div>
+                                <div *ngIf="f.yop.errors.min">Invalid Year</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Percentage</label>
+                            <input type="number" formControlName="percentage" class="form-control" [ngClass]="{ 'is-invalid': f.percentage.touched && f.percentage.errors }" />
+                            <div *ngIf="f.percentage.errors" class="invalid-feedback">
+                                <div *ngIf="f.percentage.errors.required">Percentage is required</div>
+                                <div *ngIf="f.percentage.errors.max">max:100%</div>
+                            </div>
+                        </div>                        
+                        
+                        <div class="form-group">
+                            <button [disabled]="!registerForm.valid" class="btn btn-primary">Register</button>
+                        </div>
+                    </form>
+                </div>

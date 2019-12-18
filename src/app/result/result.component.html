@@ -1,0 +1,27 @@
+<div class="container">
+        <table class="table table-striped table-bordered table-hover">
+            <caption>List of Students</caption>
+            <thead class="thead-light">
+                <tr>
+                  <th scope="col"><b>Students Result Board</b></th>
+                  <th scope="col"><button class="btn btn-primary" routerLink="/registration">Registration</button></th>
+                </tr>
+              </thead>
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col"><b><i>Student Name</i></b></th>
+              <th scope="col"><b><i>Roll Number</i></b></th>
+              <th scope="col"><b><i>Total Marks</i></b></th>
+              <th scope="col"><b><i>Status</i></b></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let studResult of newResult | arraySort" [ngStyle]="{'color': studResult.status==='Fail' ? 'red' : (studResult.status==='Topper' ? 'green' : null) }">
+              <th scope="row">{{studResult.name}}</th>
+              <td>{{studResult.rollNumber}}</td>
+              <td>{{studResult.totalMarks}}</td>
+              <td>{{studResult.status}}</td>
+            </tr>
+          </tbody>
+        </table> 
+      </div>
